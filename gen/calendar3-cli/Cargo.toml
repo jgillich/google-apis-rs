@@ -13,6 +13,10 @@ documentation = "http://byron.github.io/google-apis-rs/google_calendar3_cli"
 license = "MIT"
 keywords = ["calendar", "google", "cli"]
 
+[features]
+default = ["serde_codegen"]
+nightly = ["serde_macros"]
+
 [[bin]]
 name = "calendar3"
 
@@ -22,13 +26,14 @@ mime = "0.1.0"
 serde = ">= 0.7.0"
 serde_json = ">= 0.7.0"
 yup-oauth2 = ">= 0.5.4"
+serde_macros = { version = "*", optional = true }
 strsim = "0.4"
 yup-hyper-mock = "1.0"
 clap = "2.0"
 
 [build-dependencies]
 syntex = { version = ">= 0.23" }
-serde_codegen = { version = ">= 0.6" }
+serde_codegen = { version = ">= 0.6", optional = true }
 
 
 [dependencies.google-calendar3]

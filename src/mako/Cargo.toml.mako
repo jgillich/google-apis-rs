@@ -20,6 +20,10 @@ keywords = ["${name[:20]}", ${", ".join(estr(cargo.keywords))}]
 build = "${cargo.build_script}"
 % endif
 
+[features]
+default = ["serde_codegen"]
+nightly = ["serde_macros"]
+
 % if cargo.get('is_executable', False):
 [[bin]]
 name = "${util.program_name()}"
@@ -32,13 +36,14 @@ mime = "0.1.0"
 serde = ">= 0.7.0"
 serde_json = ">= 0.7.0"
 yup-oauth2 = ">= 0.5.4"
+serde_macros = { version = "*", optional = true }
 % for dep in cargo.get('dependencies', list()):
 ${dep}
 % endfor
 
 [build-dependencies]
 syntex = { version = ">= 0.23" }
-serde_codegen = { version = ">= 0.6" }
+serde_codegen = { version = ">= 0.6", optional = true }
 
 % if make.depends_on_suffix is not None:
 

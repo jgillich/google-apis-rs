@@ -20,8 +20,6 @@
 </%block>
 
 extern crate hyper;
-extern crate serde;
-extern crate serde_json;
 extern crate yup_oauth2 as oauth2;
 extern crate mime;
 extern crate url;
